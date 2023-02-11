@@ -1,0 +1,10 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<Title>Feather icons</Title>
+		<Description>Feather icons.</Description>
+	</PropertyGroup>
+
+
+</Project>
