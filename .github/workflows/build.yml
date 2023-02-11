@@ -5,7 +5,7 @@ name: .NET
 
 on:
   schedule:
-    - cron: '0 14 * * 5'
+    - cron: '0 1 * * 7'
   push:
     tags:
     - '*'
