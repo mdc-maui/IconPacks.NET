@@ -1,6 +1,6 @@
 # IconPacks.NET
 
-Awesome icon packs for .NET, automatically builds in the latest source.
+Awesome icon packs for .NET, automatically builds on the latest source.
 
 
 
