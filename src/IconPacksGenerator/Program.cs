@@ -13,12 +13,12 @@ internal class Program
             apiKey = args[0];
 
         Console.WriteLine("Icons initializing...");
-        // await InitIcons();
+        await InitIcons();
 
         Console.WriteLine();
         Console.WriteLine("Icons updating...");
 
-        //await UpdateIcons();
+        await UpdateIcons();
 
         Console.WriteLine();
         Console.WriteLine("Generator running...");
@@ -152,12 +152,12 @@ internal class Program
     private static void RunIconsGenerator()
     {
         FeatherGenerator.Run();
-        //FontAwesomeGenerator.Run();
-        //IonicGenerator.Run();
-        //MaterialGenerator.Run();
-        //MaterialCommunityGenerator.Run();
-        //SimpleGenerator.Run();
-        //TablerGenerator.Run();
+        FontAwesomeGenerator.Run();
+        IonicGenerator.Run();
+        MaterialGenerator.Run();
+        MaterialCommunityGenerator.Run();
+        SimpleGenerator.Run();
+        TablerGenerator.Run();
     }
 
     private static async Task BuildIconPacks(string? apiKey)
