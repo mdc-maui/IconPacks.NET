@@ -1,4 +1,4 @@
-﻿using System.Text.Json;
+using System.Text.Json;
 
 namespace IconPacksGenerator;
 
@@ -11,7 +11,7 @@ internal class FontAwesomeGenerator
 
     internal static void Run()
     {
-        var iconKinds = new Dictionary<string, string>(1000);
+        var iconKinds = new Dictionary<string, string>();
 
         var icons = JsonSerializer.Deserialize<Dictionary<string, FontAwesomeIcon>>(
             new FileStream(iconsPath, FileMode.Open)
@@ -29,6 +29,6 @@ internal class FontAwesomeGenerator
             }
         }
 
-        Util.OutputIconKinds(iconKinds, "FontAwesome");
+        Util.OutputIconKindFile(iconKinds, "FontAwesome");
     }
 }

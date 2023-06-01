@@ -1,4 +1,4 @@
-﻿namespace IconPacksGenerator;
+namespace IconPacksGenerator;
 
 internal static class MaterialCommunityGenerator
 {
@@ -6,7 +6,7 @@ internal static class MaterialCommunityGenerator
 
     internal static void Run()
     {
-        var iconKinds = new Dictionary<string, string>(5000);
+        var iconKinds = new Dictionary<string, string>();
 
         foreach (var path in Directory.EnumerateFiles(rootPath))
         {
@@ -21,6 +21,6 @@ internal static class MaterialCommunityGenerator
             }
         }
 
-        Util.OutputIconKinds(iconKinds, "MaterialCommunity");
+        Util.OutputIconKindFile(iconKinds, "MaterialCommunity");
     }
 }

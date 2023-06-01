@@ -1,4 +1,4 @@
-﻿using Svg;
+using Svg;
 using System.Text;
 using System.Xml.Linq;
 
@@ -73,25 +73,22 @@ internal static class Util
         return result.Count > 0 ? string.Join(' ', result) : default;
     }
 
-    internal static void OutputIconKinds(Dictionary<string, string> iconKinds, string type)
+    internal static void OutputIconKindFile(Dictionary<string, string> iconKinds, string type)
     {
-        var enumCls = GetEnumCls(type);
-        var dictionaryCls = GetDictionaryCls(type);
+        var sb = new StringBuilder();
+        sb.AppendLine($"using System.Collections.Generic;");
+        sb.AppendLine($"namespace IconPacks.{type}");
+        sb.AppendLine("{");
+        sb.AppendLine("\tpublic static class IconKind");
+        sb.AppendLine("\t{");
 
         if (iconKinds.Count > 0)
         {
             foreach (var kind in iconKinds)
             {
-                enumCls.AppendLine($"\t{kind.Key},");
-                dictionaryCls.AppendLine($"\t\t\t\tcase IconKind.{kind.Key}:");
-                dictionaryCls.AppendLine($"\t\t\t\t\treturn \"{kind.Value}\";");
+                sb.AppendLine($"\t\tpublic static string {kind.Key} = \"{kind.Value}\";");
             }
-
-            enumCls.Append("\t}\r\n}");
-
-            dictionaryCls.AppendLine($"\t\t\t\tdefault:");
-            dictionaryCls.AppendLine($"\t\t\t\t\treturn string.Empty;");
-            dictionaryCls.Append("\t\t\t}\r\n\t\t}\r\n\t}\r\n}");
+            sb.AppendLine("\t}\r\n}");
 
             if (!Directory.Exists(Path.Combine(Paths.RootPath, $"./IconPacks.{type}")))
             {
@@ -100,38 +97,8 @@ internal static class Util
 
             File.WriteAllText(
                 Path.Combine(Paths.RootPath, $"./IconPacks.{type}/IconKind.cs"),
-                enumCls.ToString()
-            );
-            File.WriteAllText(
-                Path.Combine(Paths.RootPath, $"./IconPacks.{type}/IconKindExtensions.cs"),
-                dictionaryCls.ToString()
+                sb.ToString()
             );
         }
-    }
-
-    internal static StringBuilder GetEnumCls(string type)
-    {
-        var result = new StringBuilder();
-        result.AppendLine($"namespace IconPacks.{type}");
-        result.AppendLine("{");
-        result.AppendLine("\tpublic enum IconKind");
-        result.AppendLine("\t{");
-        result.AppendLine("\t\tNone,");
-        return result;
-    }
-
-    internal static StringBuilder GetDictionaryCls(string type)
-    {
-        var result = new StringBuilder();
-        result.AppendLine($"using System.Collections.Generic;");
-        result.AppendLine($"namespace IconPacks.{type}");
-        result.AppendLine("{");
-        result.AppendLine("\tpublic static class IconKindExtensions");
-        result.AppendLine("\t{");
-        result.AppendLine("\t\tpublic static string GetData(this IconKind kind)");
-        result.AppendLine("\t\t{");
-        result.AppendLine("\t\t\tswitch (kind)");
-        result.AppendLine("\t\t\t{");
-        return result;
     }
 }

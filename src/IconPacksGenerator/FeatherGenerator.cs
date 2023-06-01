@@ -1,4 +1,4 @@
-﻿namespace IconPacksGenerator;
+namespace IconPacksGenerator;
 
 internal static class FeatherGenerator
 {
@@ -6,7 +6,7 @@ internal static class FeatherGenerator
 
     internal static void Run()
     {
-        var iconKinds = new Dictionary<string, string>(200);
+        var iconKinds = new Dictionary<string, string>();
 
         foreach (var path in Directory.EnumerateFiles(rootPath))
         {
@@ -21,6 +21,6 @@ internal static class FeatherGenerator
             }
         }
 
-        Util.OutputIconKinds(iconKinds, "Feather");
+        Util.OutputIconKindFile(iconKinds, "Feather");
     }
 }

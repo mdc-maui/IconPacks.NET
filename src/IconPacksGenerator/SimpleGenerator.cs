@@ -1,4 +1,4 @@
-﻿namespace IconPacksGenerator;
+namespace IconPacksGenerator;
 
 internal static class SimpleGenerator
 {
@@ -6,7 +6,7 @@ internal static class SimpleGenerator
 
     internal static void Run()
     {
-        var iconKinds = new Dictionary<string, string>(2000);
+        var iconKinds = new Dictionary<string, string>();
 
         foreach (var path in Directory.EnumerateFiles(rootPath))
         {
@@ -20,6 +20,6 @@ internal static class SimpleGenerator
                 }
             }
         }
-        Util.OutputIconKinds(iconKinds, "Simple");
+        Util.OutputIconKindFile(iconKinds, "Simple");
     }
 }

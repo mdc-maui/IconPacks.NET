@@ -1,4 +1,4 @@
-﻿namespace IconPacksGenerator;
+namespace IconPacksGenerator;
 
 internal static class IonicGenerator
 {
@@ -6,7 +6,7 @@ internal static class IonicGenerator
 
     internal static void Run()
     {
-        var iconKinds = new Dictionary<string, string>(1000);
+        var iconKinds = new Dictionary<string, string>();
 
         foreach (var path in Directory.EnumerateFiles(rootPath))
         {
@@ -21,6 +21,6 @@ internal static class IonicGenerator
             }
         }
 
-        Util.OutputIconKinds(iconKinds, "Ionic");
+        Util.OutputIconKindFile(iconKinds, "Ionic");
     }
 }

@@ -1,4 +1,4 @@
-﻿using CliWrap;
+using CliWrap;
 using CliWrap.Buffered;
 using IconPacksGenerator;
 using System.Text;
@@ -6,18 +6,19 @@ using System.Text;
 internal class Program
 {
     private static string? apiKey;
+
     private static async Task Main(string[] args)
     {
         if (args.Length > 0 && !string.IsNullOrEmpty(args[0]))
             apiKey = args[0];
 
         Console.WriteLine("Icons initializing...");
-        await InitIcons();
+        // await InitIcons();
 
         Console.WriteLine();
         Console.WriteLine("Icons updating...");
 
-        await UpdateIcons();
+        //await UpdateIcons();
 
         Console.WriteLine();
         Console.WriteLine("Generator running...");
@@ -151,12 +152,12 @@ internal class Program
     private static void RunIconsGenerator()
     {
         FeatherGenerator.Run();
-        FontAwesomeGenerator.Run();
-        IonicGenerator.Run();
-        MaterialGenerator.Run();
-        MaterialCommunityGenerator.Run();
-        SimpleGenerator.Run();
-        TablerGenerator.Run();
+        //FontAwesomeGenerator.Run();
+        //IonicGenerator.Run();
+        //MaterialGenerator.Run();
+        //MaterialCommunityGenerator.Run();
+        //SimpleGenerator.Run();
+        //TablerGenerator.Run();
     }
 
     private static async Task BuildIconPacks(string? apiKey)

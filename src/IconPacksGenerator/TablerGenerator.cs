@@ -1,4 +1,4 @@
-﻿namespace IconPacksGenerator;
+namespace IconPacksGenerator;
 
 internal static class TablerGenerator
 {
@@ -6,7 +6,7 @@ internal static class TablerGenerator
 
     internal static void Run()
     {
-        var iconKinds = new Dictionary<string, string>(200);
+        var iconKinds = new Dictionary<string, string>();
 
         foreach (var path in Directory.EnumerateFiles(rootPath))
         {
@@ -21,6 +21,6 @@ internal static class TablerGenerator
             }
         }
 
-        Util.OutputIconKinds(iconKinds, "Tabler");
+        Util.OutputIconKindFile(iconKinds, "Tabler");
     }
 }
