@@ -39,7 +39,7 @@ internal class Program
         await InitIcons(
             Paths.FeatherIconPath,
             "https://github.com/feathericons/feather.git",
-            "master",
+            "main",
             "icons/"
         );
         await InitIcons(
