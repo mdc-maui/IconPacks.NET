@@ -118,7 +118,7 @@ internal class Program
 
     private static async Task UpdateIcons()
     {
-        await UpdateIcons(Paths.FeatherIconPath, "master", "icons/");
+        await UpdateIcons(Paths.FeatherIconPath, "main", "icons/");
         await UpdateIcons(Paths.FontAwesomeIconPath, "6.x", "metadata/icons.json");
         await UpdateIcons(Paths.IonicIconPath, "main", "src/svg/");
         await UpdateIcons(
