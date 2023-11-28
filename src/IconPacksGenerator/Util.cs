@@ -86,7 +86,10 @@ internal static class Util
         {
             foreach (var kind in iconKinds)
             {
-                sb.AppendLine($"\t\tpublic static string {kind.Key} = \"{kind.Value}\";");
+                if (string.Equals(kind.Key, type))
+                    sb.AppendLine($"\t\tpublic static string _{kind.Key} = \"{kind.Value}\";");
+                else
+                    sb.AppendLine($"\t\tpublic static string {kind.Key} = \"{kind.Value}\";");
             }
             sb.AppendLine("\t}\r\n}");
 
