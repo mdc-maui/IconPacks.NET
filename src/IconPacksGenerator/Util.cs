@@ -76,10 +76,10 @@ internal static class Util
     internal static void OutputIconKindFile(Dictionary<string, string> iconKinds, string type)
     {
         var sb = new StringBuilder();
-        sb.AppendLine($"using System.Collections.Generic;");
-        sb.AppendLine($"namespace IconPacks.{type}");
+        sb.AppendLine("using System.Collections.Generic;");
+        sb.AppendLine("namespace IconPacks.IconKind");
         sb.AppendLine("{");
-        sb.AppendLine("\tpublic static class IconKind");
+        sb.AppendLine($"\tpublic static class {type}");
         sb.AppendLine("\t{");
 
         if (iconKinds.Count > 0)
@@ -96,7 +96,7 @@ internal static class Util
             }
 
             File.WriteAllText(
-                Path.Combine(Paths.RootPath, $"./IconPacks.{type}/IconKind.cs"),
+                Path.Combine(Paths.RootPath, $"./IconPacks.{type}/{type}.cs"),
                 sb.ToString()
             );
         }
