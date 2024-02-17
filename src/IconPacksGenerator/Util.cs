@@ -1,6 +1,7 @@
-using Svg;
 using System.Text;
 using System.Xml.Linq;
+using Microsoft.Maui.Graphics;
+using Svg;
 
 namespace IconPacksGenerator;
 
@@ -31,10 +32,44 @@ internal static class Util
             if (File.Exists(path))
             {
                 var xd = XDocument.Load(path);
+
+                var vector = xd.Descendants("vector");
+
+                var viewportWidthName = XName.Get(
+                    "viewportWidth",
+                    "http://schemas.android.com/apk/res/android"
+                );
+                var viewportWidth = vector
+                    .Select(x => x.Attribute(viewportWidthName))
+                    .First()
+                    ?.Value;
+
+                var viewportHeightName = XName.Get(
+                    "viewportHeight",
+                    "http://schemas.android.com/apk/res/android"
+                );
+                var viewportHeight = vector
+                    .Select(x => x.Attribute(viewportWidthName))
+                    .First()
+                    ?.Value;
+
                 var pe = xd.Descendants("path");
                 var dataName = XName.Get("pathData", "http://schemas.android.com/apk/res/android");
                 var data = pe.Select(x => x.Attribute(dataName)).First()?.Value;
-                return data;
+
+                if (!string.IsNullOrEmpty(data))
+                {
+                    if (
+                        int.TryParse(viewportWidth, out var width)
+                        && int.TryParse(viewportHeight, out var height)
+                    )
+                        return GetScaledPathData(
+                            data,
+                            new SvgViewBox(width, height, width, height)
+                        );
+                    else
+                        return GetScaledPathData(data, new SvgViewBox(24f, 24f, 24f, 24f));
+                }
             }
             return default;
         }
@@ -68,9 +103,26 @@ internal static class Util
                 else if (element is SvgPath)
                     result.Add(element.ParsePath());
             }
+            result.Reverse();
+            return GetScaledPathData(
+                result.Count > 0 ? string.Join(' ', result) : default,
+                svgDoc.ViewBox
+            );
         }
-        result.Reverse();
-        return result.Count > 0 ? string.Join(' ', result) : default;
+        return default;
+    }
+
+    internal static string? GetScaledPathData(string? pathData, SvgViewBox viewBox)
+    {
+        if (string.IsNullOrEmpty(pathData))
+            return default;
+
+        var scaleX = 24f / viewBox.Width;
+        var scaleY = 24f / viewBox.Height;
+
+        var path = PathBuilder.Build(pathData);
+        var scaledPath = path.AsScaledPath(scaleX, scaleY);
+        return scaledPath.ToDefinitionString();
     }
 
     internal static void OutputIconKindFile(Dictionary<string, string> iconKinds, string type)

@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="CliWrap" Version="3.6.0" />
+    <PackageReference Include="Microsoft.Maui.Graphics" Version="8.0.7" />
     <PackageReference Include="Svg" Version="3.4.4" />
     <PackageReference Include="System.Text.Json" Version="7.0.1" />
   </ItemGroup>
