@@ -1,7 +1,7 @@
+using System.Text;
 using CliWrap;
 using CliWrap.Buffered;
 using IconPacksGenerator;
-using System.Text;
 
 internal class Program
 {
@@ -67,15 +67,9 @@ internal class Program
             "svg/"
         );
         await InitIcons(
-            Paths.SimpleIconPath,
-            "https://github.com/simple-icons/simple-icons.git",
-            "develop",
-            "icons/"
-        );
-        await InitIcons(
             Paths.TablerIconPath,
             "https://github.com/tabler/tabler-icons.git",
-            "master",
+            "dev",
             "icons/"
         );
     }
@@ -127,8 +121,7 @@ internal class Program
             "symbols/android/*/materialsymbolssharp/*_24px.xml"
         );
         await UpdateIcons(Paths.MaterialCommunityIconPath, "master", "svg/");
-        await UpdateIcons(Paths.SimpleIconPath, "develop", "icons/");
-        await UpdateIcons(Paths.TablerIconPath, "master", "icons/");
+        await UpdateIcons(Paths.TablerIconPath, "dev", "icons/");
     }
 
     private static async Task UpdateIcons(string workPath, string branch, string sparseCheckout)
@@ -156,7 +149,6 @@ internal class Program
         IonicGenerator.Run();
         MaterialGenerator.Run();
         MaterialCommunityGenerator.Run();
-        SimpleGenerator.Run();
         TablerGenerator.Run();
     }
 
@@ -195,11 +187,6 @@ internal class Program
         await Cli.Wrap("dotnet")
             .WithWorkingDirectory(Paths.RootPath)
             .WithArguments("pack ./IconPacks.MaterialCommunity -c release")
-            .WithStandardOutputPipe(PipeTarget.ToDelegate(Console.WriteLine, Encoding.UTF8))
-            .ExecuteBufferedAsync();
-        await Cli.Wrap("dotnet")
-            .WithWorkingDirectory(Paths.RootPath)
-            .WithArguments("pack ./IconPacks.Simple -c release")
             .WithStandardOutputPipe(PipeTarget.ToDelegate(Console.WriteLine, Encoding.UTF8))
             .ExecuteBufferedAsync();
         await Cli.Wrap("dotnet")

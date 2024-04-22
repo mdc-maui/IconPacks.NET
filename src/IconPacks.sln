@@ -15,8 +15,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IconPacks.Feather", "IconPa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IconPacks.FontAwesome", "IconPacks.FontAwesome\IconPacks.FontAwesome.csproj", "{3972954D-3049-41D2-B9B2-0CF2E0504EB5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IconPacks.Simple", "IconPacks.Simple\IconPacks.Simple.csproj", "{01F092FD-AF46-47DF-9AB9-A757117A40A0}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IconPacks.Tabler", "IconPacks.Tabler\IconPacks.Tabler.csproj", "{B54F22BA-9521-4CB5-9FEC-DCC55B86078F}"
 EndProject
 Global
@@ -49,10 +47,6 @@ Global
 		{3972954D-3049-41D2-B9B2-0CF2E0504EB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3972954D-3049-41D2-B9B2-0CF2E0504EB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3972954D-3049-41D2-B9B2-0CF2E0504EB5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{01F092FD-AF46-47DF-9AB9-A757117A40A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{01F092FD-AF46-47DF-9AB9-A757117A40A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{01F092FD-AF46-47DF-9AB9-A757117A40A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{01F092FD-AF46-47DF-9AB9-A757117A40A0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B54F22BA-9521-4CB5-9FEC-DCC55B86078F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B54F22BA-9521-4CB5-9FEC-DCC55B86078F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B54F22BA-9521-4CB5-9FEC-DCC55B86078F}.Release|Any CPU.ActiveCfg = Release|Any CPU
